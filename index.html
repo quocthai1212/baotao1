@@ -3,7 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Báo cáo Lab 1: An Toàn Điện Toán Đám Mây</title>
+    <title>Báo cáo Lab 1: An Toàn Điện Toán Đám Mây - Bảo mật Nâng cao</title>
+    
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        script-src 'self' https://pagespeed.web.dev; 
+        style-src 'self' https://fonts.googleapis.com; 
+        font-src 'self' https://fonts.gstatic.com; 
+        img-src 'self' data:; 
+        frame-ancestors 'none';
+        form-action 'self';
+    ">
+
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <meta http-equiv="Permissions-Policy" content="
+        geolocation=(), 
+        midi=(), 
+        sync-xhr=(), 
+        microphone=(), 
+        camera=(), 
+        fullscreen=(self),
+        payment=()
+    ">
+    
     <style>
         /* --- CSS CƠ BẢN & GIAO DIỆN --- */
         body {
@@ -13,7 +40,6 @@
             background-color: #f0f4f8;
             color: #333;
             line-height: 1.6;
-            /* Thiết lập để footer luôn ở đáy nếu nội dung ngắn */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -22,9 +48,8 @@
             width: 90%;
             max-width: 1200px;
             margin: auto;
-            /* Đã xóa padding-bottom lớn ở đây */
             padding: 20px 0 40px 0; 
-            flex: 1; /* Đẩy footer xuống dưới cùng */
+            flex: 1; 
         }
         h1, h2, h3 { font-weight: 700; }
 
@@ -40,15 +65,14 @@
         header h1 { margin: 0; font-size: 2.5em; }
         header p { font-size: 1.2em; opacity: 0.9; }
 
-        /* --- SỬA ĐỔI FOOTER --- */
+        /* Footer */
         footer {
             background-color: #343a40;
             color: #adb5bd;
             text-align: center;
             padding: 20px 0;
             width: 100%;
-            margin-top: auto; /* Đẩy footer xuống đáy nếu nội dung ngắn */
-            /* Đã xóa position: fixed để footer không trôi theo màn hình */
+            margin-top: auto;
         }
 
         /* Section Styling */
@@ -177,10 +201,6 @@
                                 <td>Dữ liệu và quyền truy cập.</td>
                             </tr>
                             <tr>
-                                <td><strong>Ví dụ</strong></td>
-                                <td>Amazon EC2, Google Compute Engine, <b>DigitalOcean</b>.</td>
-                                <td>Cloudflare Pages, Heroku, <b>Google App Engine</b>.</td>
-                                <td>Gmail, Dropbox, <b>Salesforce</b>, Office 365.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -300,5 +320,3 @@
 
 </body>
 </html>
-
-
