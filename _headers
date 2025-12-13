@@ -1,0 +1,16 @@
+/*
+  # 1. HTTP STRICT TRANSPORT SECURITY (HSTS) - Bắt buộc dùng HTTPS
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+  # 2. X-Content-Type-Options - Chống MIME Sniffing
+  X-Content-Type-Options: nosniff
+
+  # 3. X-Frame-Options - Chống Clickjacking
+  X-Frame-Options: DENY
+
+  # 4. Referrer-Policy
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # 5. Cross-Origin Headers (Đề xuất thêm để cô lập tốt hơn)
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: require-corp
