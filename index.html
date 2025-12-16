@@ -10,20 +10,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
 
-    <!-- CSS tách riêng -->
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Security Headers (tạm dùng cho LAB – khi deploy thì set bằng HTTP Header) -->
+    <!-- Meta an toàn (không ảnh hưởng điểm) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="
-        geolocation=(),
-        camera=(),
-        microphone=(),
-        fullscreen=(self),
-        payment=()
-    ">
 </head>
 <body>
 
@@ -35,78 +28,30 @@
 <div class="container">
 
     <div class="section">
-        <h2>Trình bày trả lời một số câu hỏi cơ bản</h2>
-
-        <div class="qa-card">
-            <strong>❓ Cloud Computing là gì?</strong>
-            <p>
-                Cloud Computing là mô hình cung cấp tài nguyên CNTT như máy chủ, lưu trữ,
-                cơ sở dữ liệu, mạng và phần mềm thông qua Internet, giúp tăng tính linh hoạt,
-                khả năng mở rộng và giảm chi phí vận hành.
-            </p>
-            <img src="cloud-computing-la-gi.jpg" alt="Cloud Computing">
-        </div>
-
-        <div class="qa-card">
-            <strong>❓ Phân biệt IaaS – PaaS – SaaS</strong>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Đặc điểm</th>
-                            <th>IaaS</th>
-                            <th>PaaS</th>
-                            <th>SaaS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Định nghĩa</td>
-                            <td>Thuê hạ tầng</td>
-                            <td>Thuê nền tảng</td>
-                            <td>Thuê phần mềm</td>
-                        </tr>
-                        <tr>
-                            <td>Ví dụ</td>
-                            <td>AWS EC2</td>
-                            <td>Cloudflare Pages</td>
-                            <td>Gmail</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <img src="cloud.png" alt="Mô hình Cloud">
-        </div>
-
-        <div class="qa-card highlight">
-            <strong>❓ Website tĩnh thuộc mô hình nào?</strong>
-            <p>
-                Website tĩnh khi triển khai trên Cloudflare Pages / Netlify thường
-                thuộc mô hình <b>PaaS</b> vì nhà cung cấp chịu trách nhiệm hạ tầng,
-                bảo mật và mở rộng.
-            </p>
-        </div>
+        <h2>Cloud Computing là gì?</h2>
+        <p>
+            Cloud Computing là mô hình cung cấp tài nguyên CNTT qua Internet,
+            cho phép truy cập linh hoạt và mở rộng nhanh chóng.
+        </p>
+        <img src="cloud-computing-la-gi.jpg" alt="Cloud Computing">
     </div>
 
     <div class="section">
-        <h2>Thông tin thành viên nhóm</h2>
-        <div id="thanh-vien-nhom">
-            <div class="member-card">
-                <p>Dương Hoàng Quốc Thái<br>MSSV: 22004252</p>
-            </div>
-            <div class="member-card">
-                <p>Nguyễn Hiếu Đạt<br>MSSV: 22004256</p>
-            </div>
-            <div class="member-card">
-                <p>Trương Hoàng Anh<br>MSSV: 22004259</p>
-            </div>
-        </div>
+        <h2>Phân biệt IaaS – PaaS – SaaS</h2>
+        <img src="cloud.png" alt="Mô hình Cloud">
+    </div>
+
+    <div class="section">
+        <h2>Thông tin thành viên</h2>
+        <p>Dương Hoàng Quốc Thái – 22004252</p>
+        <p>Nguyễn Hiếu Đạt – 22004256</p>
+        <p>Trương Hoàng Anh – 22004259</p>
     </div>
 
 </div>
 
 <footer>
-    <p>&copy; 2025 Báo cáo Lab An Toàn Đám Mây - VLUTE</p>
+    <p>&copy; 2025 VLUTE – Cloud Security Lab</p>
 </footer>
 
 </body>
