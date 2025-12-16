@@ -4,330 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Báo cáo Lab 1: An Toàn Điện Toán Đám Mây - Bảo mật Nâng cao</title>
-    
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self'; 
-        script-src 'self' https://pagespeed.web.dev; 
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
-        font-src 'self' https://fonts.gstatic.com; 
-        img-src 'self' data:; 
-        frame-ancestors 'none';
-        form-action 'self';
-        upgrade-insecure-requests;
-        block-all-mixed-content;
-    ">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
+
+    <!-- CSS tách riêng -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Security Headers (tạm dùng cho LAB – khi deploy thì set bằng HTTP Header) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="
-        geolocation=(), 
-        midi=(), 
-        sync-xhr=(), 
-        microphone=(), 
-        camera=(), 
+        geolocation=(),
+        camera=(),
+        microphone=(),
         fullscreen=(self),
         payment=()
     ">
-    
-    <style>
-        /* --- CSS CƠ BẢN & GIAO DIỆN --- */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f4f8;
-            color: #333;
-            line-height: 1.6;
-            /* Thiết lập để footer luôn ở đáy nếu nội dung ngắn */
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            /* Đã xóa padding-bottom lớn ở đây */
-            padding: 20px 0 40px 0;  
-            flex: 1; /* Đẩy footer xuống dưới cùng */
-        }
-        h1, h2, h3 { font-weight: 700; }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #0056b3, #00a8cc);
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            margin-bottom: 30px;
-        }
-        header h1 { margin: 0; font-size: 2.5em; }
-        header p { font-size: 1.2em; opacity: 0.9; }
-
-        /* --- SỬA ĐỔI FOOTER --- */
-        footer {
-            background-color: #343a40;
-            color: #adb5bd;
-            text-align: center;
-            padding: 20px 0;
-            width: 100%;
-            margin-top: auto; /* Đẩy footer xuống đáy nếu nội dung ngắn */
-        }
-
-        /* Section Styling */
-        .section {
-            background: white;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        }
-        .section h2 {
-            color: #d9534f;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-        }
-
-        /* Card câu hỏi */
-        .qa-card {
-            background-color: #fff;
-            border: 1px solid #e1e4e8;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            transition: box-shadow 0.3s;
-        }
-        .qa-card:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .qa-card strong {
-            color: #007bff;
-            font-size: 1.15em;
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        /* CSS CHO ẢNH */
-        .qa-card img {
-            max-width: 100%;
-            width: 500px;
-            height: auto;
-            display: block;
-            margin: 15px auto;
-            border-radius: 6px;
-            border: 1px solid #dee2e6;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* Bảng (Table) */
-        .table-responsive { overflow-x: auto; }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        th, td {
-            border: 1px solid #dee2e6;
-            padding: 12px;
-            text-align: left;
-            vertical-align: top;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-        }
-        tr:nth-child(even) { background-color: #f8f9fa; }
-
-        /* Thành viên nhóm */
-        #thanh-vien-nhom {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .member-card {
-            background: #fff;
-            border-left: 4px solid #17a2b8;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            width: 300px;
-        }
-    </style>
 </head>
 <body>
 
-    <header>
-        <h1>BÁO CÁO LAB 1: AN TOÀN ĐIỆN TOÁN ĐÁM MÂY</h1>
-        <p>Tìm hiểu kiến thức cơ bản & Triển khai Web tĩnh</p>
-    </header>
+<header>
+    <h1>BÁO CÁO LAB 1: AN TOÀN ĐIỆN TOÁN ĐÁM MÂY</h1>
+    <p>Tìm hiểu kiến thức cơ bản & Triển khai Web tĩnh</p>
+</header>
 
-    <div class="container">
+<div class="container">
 
-        <div class="section">
-            <h2>Trình bày trả lời một số câu hỏi cơ bản: </h2>
-            
-            <div class="qa-card">
-                <strong>❓ Cloud Computing là gì?</strong>
-                <p>Cloud Computing là việc cung cấp các dịch vụ điện toán bao gồm máy chủ, lưu trữ, cơ sở dữ liệu, mạng, phần mềm, phân tích và trí tuệ nhân tạo qua Internet ("đám mây") để mang lại sự đổi mới nhanh hơn, tài nguyên linh hoạt và lợi thế về quy mô. Thay vì sở hữu hạ tầng vật lý, bạn thuê quyền truy cập vào bất cứ thứ gì từ ứng dụng đến lưu trữ từ nhà cung cấp dịch vụ đám mây.</p>
-                <img src="cloud-computing-la-gi.jpg" alt="Cloud Computing">
-            </div>
+    <div class="section">
+        <h2>Trình bày trả lời một số câu hỏi cơ bản</h2>
 
-            <div class="qa-card">
-                <strong>❓ Phân biệt IaaS – PaaS – SaaS</strong>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Đặc điểm</th>
-                                <th>IaaS (Hạ tầng)</th>
-                                <th>PaaS (Nền tảng)</th>
-                                <th>SaaS (Phần mềm)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Định nghĩa</strong></td>
-                                <td>Thuê cơ sở hạ tầng CNTT (máy chủ, máy ảo, lưu trữ, mạng).</td>
-                                <td>Cung cấp môi trường để phát triển, kiểm thử và quản lý ứng dụng mà không lo về hạ tầng.</td>
-                                <td>Cung cấp phần mềm hoàn chỉnh chạy trên nền tảng đám mây.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Bạn quản lý</strong></td>
-                                <td>Hệ điều hành, dữ liệu, ứng dụng, runtime.</td>
-                                <td>Dữ liệu và ứng dụng của bạn.</td>
-                                <td>Dữ liệu và quyền truy cập.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Ví dụ</strong></td>
-                                <td>Amazon EC2, Google Compute Engine, <b>DigitalOcean</b>.</td>
-                                <td>Cloudflare Pages, Heroku, <b>Google App Engine</b>.</td>
-                                <td>Gmail, Dropbox, <b>Salesforce</b>, Office 365.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <img src="cloud.png" alt="Mô hình dịch vụ">
-            </div>
-
-            <div class="qa-card" style="background-color: #e3f2fd;">
-                <strong>❓ Website tĩnh thuộc mô hình nào?</strong>
-                <p>Website tĩnh, đặc biệt khi triển khai qua Cloudflare Pages, Netlify hay Vercel, thường được xếp vào mô hình <b>PaaS (Platform as a Service)</b>.</p>
-                <p><i>Lý do:</i> Bạn chỉ cần cung cấp mã nguồn (HTML/CSS/JS), nhà cung cấp sẽ lo toàn bộ việc thiết lập máy chủ, cấu hình mạng, bảo mật và mở rộng quy mô.</p>
-            </div>
+        <div class="qa-card">
+            <strong>❓ Cloud Computing là gì?</strong>
+            <p>
+                Cloud Computing là mô hình cung cấp tài nguyên CNTT như máy chủ, lưu trữ,
+                cơ sở dữ liệu, mạng và phần mềm thông qua Internet, giúp tăng tính linh hoạt,
+                khả năng mở rộng và giảm chi phí vận hành.
+            </p>
+            <img src="cloud-computing-la-gi.jpg" alt="Cloud Computing">
         </div>
-        
-        <hr/>
 
-        <div class="section">
-            <h2>2. Cloudflare Pages & CDN</h2>
-
-            <div class="qa-card">
-                <strong>❓ Cloudflare Pages hoạt động theo cơ chế gì?</strong>
-                <p>Hoạt động dựa trên cơ chế <b>JAMstack</b> và tích hợp chặt chẽ với <b>Git</b>:</p>
-                <ol>
-                    <li><b>Kết nối Git:</b> Kết nối với kho lưu trữ mã nguồn (GitHub, GitLab).</li>
-                    <li><b>Build:</b> Tự động "build" tạo ra các tệp tĩnh (HTML, CSS, JS) khi có thay đổi.</li>
-                    <li><b>Deploy to Edge:</b> Đẩy nội dung lên mạng lưới máy chủ biên (Edge Network) toàn cầu.</li>
-                </ol>
-            </div>
-            <div class="qa-card">
-                <strong>❓ CDN (Content Delivery Network) phân phối nội dung ra sao?</strong>
-                <ol>
-                    <li><b>Origin Server (Máy chủ gốc): </b> Nơi chứa dữ liệu gốc của website.</li>
-                    <li><b>Caching (Lưu đệm):</b> Khi người dùng truy cập, CDN sẽ lấy dữ liệu từ máy chủ gốc và lưu bản sao (cache) tại các máy chủ biên (PoP) gần người dùng nhất.</li>
-                    <li><b>Delivery (Phân phối): </b> Những người dùng tiếp theo ở khu vực đó sẽ tải dữ liệu từ máy chủ biên thay vì phải kết nối về máy chủ gốc ở xa.</li>
-                </ol>
-            </div>
-
-            <div class="qa-card">
-                <strong>❓ CDN có vai trò gì đối với hiệu năng và an toàn?</strong>
-                <p><b>Cơ chế:</b> Lấy dữ liệu từ <i>Origin Server</i> (máy chủ gốc), lưu đệm (Caching) tại các máy chủ biên (PoP) và phân phối (Delivery) cho người dùng từ vị trí gần nhất.</p>
-                
-                <p><b>🚀 Về Hiệu năng:</b></p>
-                <ul>
-                    <li>Giảm độ trễ (**Latency**).</li>
-                    <li>Giảm tải cho máy chủ gốc.</li>
-                    <li>Tăng tốc độ tải trang và điểm SEO.</li>
-                </ul>
-
-                <p><b>🛡️ Về An toàn:</b></p>
-                <ul>
-                    <li>**Ẩn IP gốc:** Hacker không biết IP thực của máy chủ.</li>
-                    <li>**Chống DDoS:** Hấp thụ lượng traffic tấn công lớn (**DDoS Scrubbing**).</li>
-                    <li>**WAF:** Chặn yêu cầu độc hại tại biên.</li>
-                </ul>
-                <img src="cdn-3.jpg" alt="">
-            </div>
-        </div>
-        
-        <hr/>
-
-        <div class="section">
-            <h2>3. CÁC RỦI RO BẢO MẬT & GIẢI PHÁP</h2>
+        <div class="qa-card">
+            <strong>❓ Phân biệt IaaS – PaaS – SaaS</strong>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th style="width: 20%;">Rủi ro bảo mật</th>
-                            <th style="width: 40%;">Giải thích</th>
-                            <th style="width: 40%;">Giải pháp</th>
+                            <th>Đặc điểm</th>
+                            <th>IaaS</th>
+                            <th>PaaS</th>
+                            <th>SaaS</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Lộ IP gốc</strong></td>
-                            <td>Kẻ tấn công tìm được IP thật và tấn công vòng qua CDN (bypass CDN).</td>
-                            <td>Sử dụng tường lửa (**Firewall**) chỉ cho phép (**whitelist**) IP của Cloudflare truy cập máy chủ gốc.</td>
+                            <td>Định nghĩa</td>
+                            <td>Thuê hạ tầng</td>
+                            <td>Thuê nền tảng</td>
+                            <td>Thuê phần mềm</td>
                         </tr>
                         <tr>
-                            <td><strong>Cấu hình sai</strong><br>(Misconfiguration)</td>
-                            <td>Bucket S3 để public, quyền truy cập quá rộng trong IAM.</td>
-                            <td>Áp dụng nguyên tắc **Least Privilege** (quyền tối thiểu). Sử dụng công cụ quét cấu hình tự động (CSPM).</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Tấn công chuỗi cung ứng</strong><br>(Supply Chain)</td>
-                            <td>Mã độc bị cài vào thư viện bên thứ 3 trong quá trình Build.</td>
-                            <td>Kiểm tra kỹ thư viện, dùng công cụ quét lỗ hổng mã nguồn (SAST/SCA) trước khi deploy.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>DDoS tầng ứng dụng</strong></td>
-                            <td>Tấn công vào API hoặc chức năng tìm kiếm tiêu tốn tài nguyên.</td>
-                            <td>Cấu hình **Rate Limiting** và tinh chỉnh **WAF** để chặn hành vi bất thường.</td>
+                            <td>Ví dụ</td>
+                            <td>AWS EC2</td>
+                            <td>Cloudflare Pages</td>
+                            <td>Gmail</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
-        
-        <hr/>
-
-        <div class="section">
-            <h2>THÔNG TIN THÀNH VIÊN NHÓM</h2>
-            <div id="thanh-vien-nhom">
-                <div class="member-card">
-                    <h3>Thành viên</h3>
-                    <p>Dương Hoàng Quốc Thái<br>MSSV: 22004252</p>
-                </div>
-                <div class="member-card">
-                    <h3>Thành viên</h3>
-                    <p>Nguyễn Hiếu Đạt<br>MSSV: 22004256</p>
-                </div>
-                <div class="member-card">
-                    <h3>Thành viên</h3>
-                    <p>Trương Hoàng Anh<br>MSSV: 22004259</p>
-                </div>
-            </div>
+            <img src="cloud.png" alt="Mô hình Cloud">
         </div>
 
+        <div class="qa-card highlight">
+            <strong>❓ Website tĩnh thuộc mô hình nào?</strong>
+            <p>
+                Website tĩnh khi triển khai trên Cloudflare Pages / Netlify thường
+                thuộc mô hình <b>PaaS</b> vì nhà cung cấp chịu trách nhiệm hạ tầng,
+                bảo mật và mở rộng.
+            </p>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Báo cáo Lab An Toàn Đám Mây - Nhóm Sinh Viên VLUTE</p>
-    </footer>
+    <div class="section">
+        <h2>Thông tin thành viên nhóm</h2>
+        <div id="thanh-vien-nhom">
+            <div class="member-card">
+                <p>Dương Hoàng Quốc Thái<br>MSSV: 22004252</p>
+            </div>
+            <div class="member-card">
+                <p>Nguyễn Hiếu Đạt<br>MSSV: 22004256</p>
+            </div>
+            <div class="member-card">
+                <p>Trương Hoàng Anh<br>MSSV: 22004259</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; 2025 Báo cáo Lab An Toàn Đám Mây - VLUTE</p>
+</footer>
 
 </body>
 </html>
