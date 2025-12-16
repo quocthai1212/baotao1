@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Báo cáo Lab 1: An Toàn Điện Toán Đám Mây - Bảo mật Nâng cao</title>
+    <title>Báo cáo Lab 1 - An Toàn Điện Toán Đám Mây</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,45 +13,189 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Meta an toàn (không ảnh hưởng điểm) -->
+    <!-- Meta an toàn -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
 <body>
 
-<header>
-    <h1>BÁO CÁO LAB 1: AN TOÀN ĐIỆN TOÁN ĐÁM MÂY</h1>
-    <p>Tìm hiểu kiến thức cơ bản & Triển khai Web tĩnh</p>
+<header class="hero">
+    <h1>BÁO CÁO LAB 1</h1>
+    <p>An Toàn Điện Toán Đám Mây – Bảo mật nâng cao</p>
 </header>
 
-<div class="container">
+<main class="container">
 
-    <div class="section">
-        <h2>Cloud Computing là gì?</h2>
-        <p>
-            Cloud Computing là mô hình cung cấp tài nguyên CNTT qua Internet,
-            cho phép truy cập linh hoạt và mở rộng nhanh chóng.
-        </p>
-        <img src="cloud-computing-la-gi.jpg" alt="Cloud Computing">
-    </div>
+    <!-- PHẦN 1 -->
+    <section class="section">
+        <h2>1. Trả lời một số câu hỏi cơ bản</h2>
 
-    <div class="section">
-        <h2>Phân biệt IaaS – PaaS – SaaS</h2>
-        <img src="cloud.png" alt="Mô hình Cloud">
-    </div>
+        <div class="card">
+            <h3>❓ Cloud Computing là gì?</h3>
+            <p>
+                Cloud Computing là việc cung cấp các dịch vụ điện toán như máy chủ,
+                lưu trữ, cơ sở dữ liệu, mạng, phần mềm và trí tuệ nhân tạo thông qua Internet
+                (“đám mây”), giúp tăng tính linh hoạt, khả năng mở rộng và giảm chi phí đầu tư hạ tầng.
+            </p>
+            <img src="cloud-computing-la-gi.jpg" alt="Cloud Computing">
+        </div>
 
-    <div class="section">
-        <h2>Thông tin thành viên</h2>
-        <p>Dương Hoàng Quốc Thái – 22004252</p>
-        <p>Nguyễn Hiếu Đạt – 22004256</p>
-        <p>Trương Hoàng Anh – 22004259</p>
-    </div>
+        <div class="card">
+            <h3>❓ Phân biệt IaaS – PaaS – SaaS</h3>
 
-</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Đặc điểm</th>
+                            <th>IaaS</th>
+                            <th>PaaS</th>
+                            <th>SaaS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Định nghĩa</td>
+                            <td>Thuê cơ sở hạ tầng CNTT</td>
+                            <td>Cung cấp nền tảng phát triển</td>
+                            <td>Cung cấp phần mềm hoàn chỉnh</td>
+                        </tr>
+                        <tr>
+                            <td>Bạn quản lý</td>
+                            <td>Hệ điều hành, dữ liệu, ứng dụng</td>
+                            <td>Dữ liệu và ứng dụng</td>
+                            <td>Dữ liệu và quyền truy cập</td>
+                        </tr>
+                        <tr>
+                            <td>Ví dụ</td>
+                            <td>Amazon EC2, DigitalOcean</td>
+                            <td>Cloudflare Pages, Heroku</td>
+                            <td>Gmail, Dropbox, Office 365</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <img src="cloud.png" alt="Mô hình dịch vụ Cloud">
+        </div>
+
+        <div class="card highlight">
+            <h3>❓ Website tĩnh thuộc mô hình nào?</h3>
+            <p>
+                Website tĩnh khi triển khai trên Cloudflare Pages, Netlify hoặc Vercel
+                thường thuộc mô hình <b>PaaS (Platform as a Service)</b>.
+            </p>
+            <p>
+                <b>Lý do:</b> Người dùng chỉ cần cung cấp mã nguồn, nhà cung cấp sẽ đảm nhiệm
+                hạ tầng, bảo mật, cấu hình mạng và mở rộng quy mô.
+            </p>
+        </div>
+    </section>
+
+    <!-- PHẦN 2 -->
+    <section class="section">
+        <h2>2. Cloudflare Pages & CDN</h2>
+
+        <div class="card">
+            <h3>❓ Cloudflare Pages hoạt động theo cơ chế gì?</h3>
+            <ul>
+                <li><b>Kết nối Git:</b> Liên kết với GitHub/GitLab</li>
+                <li><b>Build:</b> Tự động build khi có thay đổi</li>
+                <li><b>Deploy to Edge:</b> Phân phối toàn cầu qua Edge Network</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>❓ CDN phân phối nội dung ra sao?</h3>
+            <ol>
+                <li><b>Origin Server:</b> Chứa dữ liệu gốc</li>
+                <li><b>Caching:</b> Lưu bản sao tại máy chủ biên (PoP)</li>
+                <li><b>Delivery:</b> Người dùng tải từ vị trí gần nhất</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h3>❓ Vai trò của CDN đối với hiệu năng & an toàn</h3>
+
+            <p><b>🚀 Hiệu năng:</b></p>
+            <ul>
+                <li>Giảm độ trễ (Latency)</li>
+                <li>Giảm tải máy chủ gốc</li>
+                <li>Cải thiện tốc độ tải trang & SEO</li>
+            </ul>
+
+            <p><b>🛡️ An toàn:</b></p>
+            <ul>
+                <li>Ẩn IP máy chủ gốc</li>
+                <li>Chống DDoS</li>
+                <li>WAF chặn truy cập độc hại</li>
+            </ul>
+
+            <img src="cdn-3.jpg" alt="CDN Security">
+        </div>
+    </section>
+
+    <!-- PHẦN 3 -->
+    <section class="section">
+        <h2>3. Các rủi ro bảo mật & giải pháp</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rủi ro</th>
+                        <th>Giải thích</th>
+                        <th>Giải pháp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lộ IP gốc</td>
+                        <td>Tấn công bypass CDN</td>
+                        <td>Whitelist IP Cloudflare</td>
+                    </tr>
+                    <tr>
+                        <td>Cấu hình sai</td>
+                        <td>Quyền truy cập quá rộng</td>
+                        <td>Least Privilege, CSPM</td>
+                    </tr>
+                    <tr>
+                        <td>Supply Chain</td>
+                        <td>Mã độc từ thư viện</td>
+                        <td>SAST / SCA</td>
+                    </tr>
+                    <tr>
+                        <td>DDoS tầng ứng dụng</td>
+                        <td>Làm cạn tài nguyên</td>
+                        <td>Rate Limiting, WAF</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- THÀNH VIÊN -->
+    <section class="section">
+        <h2>Thông tin thành viên nhóm</h2>
+
+        <div class="members">
+            <div class="member">
+                <p><b>Dương Hoàng Quốc Thái</b><br>MSSV: 22004252</p>
+            </div>
+            <div class="member">
+                <p><b>Nguyễn Hiếu Đạt</b><br>MSSV: 22004256</p>
+            </div>
+            <div class="member">
+                <p><b>Trương Hoàng Anh</b><br>MSSV: 22004259</p>
+            </div>
+        </div>
+    </section>
+
+</main>
 
 <footer>
-    <p>&copy; 2025 VLUTE – Cloud Security Lab</p>
+    <p>&copy; 2025 – Báo cáo Lab An Toàn Đám Mây – VLUTE</p>
 </footer>
 
 </body>
