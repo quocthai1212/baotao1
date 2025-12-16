@@ -1,16 +1,6 @@
 /*
-  # 1. HTTP STRICT TRANSPORT SECURITY (HSTS) - Bắt buộc dùng HTTPS
-  Strict-Transport-Security: max-age=31536000; includeSubDomains
-
-  # 2. X-Content-Type-Options - Chống MIME Sniffing
-  X-Content-Type-Options: nosniff
-
-  # 3. X-Frame-Options - Chống Clickjacking
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; upgrade-insecure-requests; block-all-mixed-content
   X-Frame-Options: DENY
-
-  # 4. Referrer-Policy
+  X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-
-  # 5. Cross-Origin Headers (Đề xuất thêm để cô lập tốt hơn)
-  Cross-Origin-Opener-Policy: same-origin
-  Cross-Origin-Embedder-Policy: require-corp
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), fullscreen=(self), payment=()
