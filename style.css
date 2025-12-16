@@ -5,16 +5,16 @@ body {
     color: #333;
 }
 
-header {
+.hero {
     background: linear-gradient(135deg, #0056b3, #00a8cc);
     color: white;
-    padding: 40px;
+    padding: 50px 20px;
     text-align: center;
 }
 
 .container {
     width: 90%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
 }
 
@@ -22,14 +22,70 @@ header {
     background: white;
     padding: 30px;
     margin: 30px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.section h2 {
+    border-left: 5px solid #007bff;
+    padding-left: 15px;
+}
+
+.card {
+    margin-top: 25px;
+}
+
+.card h3 {
+    color: #0056b3;
+}
+
+.highlight {
+    background: #e3f2fd;
+    padding: 20px;
+    border-radius: 8px;
 }
 
 img {
     max-width: 100%;
     display: block;
-    margin: 15px auto;
+    margin: 20px auto;
+    border-radius: 8px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+th {
+    background: #007bff;
+    color: white;
+}
+
+.members {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.member {
+    background: #f8f9fa;
+    padding: 20px;
+    width: 260px;
+    text-align: center;
+    border-left: 4px solid #17a2b8;
+    border-radius: 8px;
 }
 
 footer {
