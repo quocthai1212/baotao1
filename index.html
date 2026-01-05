@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Báo cáo Lab 1 - An Toàn Điện Toán Đám Mây</title>
+    <title>Báo cáo Lab 1 & 4 - An Toàn Điện Toán Đám Mây</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
+    <!-- CSS (Giữ nguyên liên kết cũ) -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Meta an toàn -->
@@ -27,7 +27,7 @@
 
 <main class="container">
 
-    <!-- PHẦN 1 -->
+    <!-- PHẦN 1: LAB 1 CŨ -->
     <section class="section">
         <h2>1. Trả lời một số câu hỏi cơ bản</h2>
 
@@ -38,12 +38,10 @@
                 lưu trữ, cơ sở dữ liệu, mạng, phần mềm và trí tuệ nhân tạo thông qua Internet
                 (“đám mây”), giúp tăng tính linh hoạt, khả năng mở rộng và giảm chi phí đầu tư hạ tầng.
             </p>
-            <img src="cloud-computing-la-gi.jpg" alt="Cloud Computing">
         </div>
 
         <div class="card">
             <h3>❓ Phân biệt IaaS – PaaS – SaaS</h3>
-
             <div class="table-wrapper">
                 <table>
                     <thead>
@@ -62,155 +60,139 @@
                             <td>Cung cấp phần mềm hoàn chỉnh</td>
                         </tr>
                         <tr>
-                            <td>Bạn quản lý</td>
-                            <td>Hệ điều hành, dữ liệu, ứng dụng</td>
-                            <td>Dữ liệu và ứng dụng</td>
-                            <td>Dữ liệu và quyền truy cập</td>
-                        </tr>
-                        <tr>
                             <td>Ví dụ</td>
-                            <td>Amazon EC2, DigitalOcean</td>
-                            <td>Cloudflare Pages, Heroku</td>
-                            <td>Gmail, Dropbox, Office 365</td>
+                            <td>Amazon EC2</td>
+                            <td>Cloudflare Pages</td>
+                            <td>Gmail, Office 365</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+        </div>
+    </section>
 
-            <img src="cloud.png" alt="Mô hình dịch vụ Cloud">
+    <!---------------------------------------- PHẦN LAB 4 --------------------------------------->
+    <header class="hero">
+        <h1>BÁO CÁO LAB 4</h1>
+        <p>GIÁM SÁT, NHẬT KÝ VÀ PHÁT HIỆN BẤT THƯỜNG</p>
+    </header>
+
+    <section class="section">
+        <h2>1. Kiến thức cơ bản về Monitoring & Logging</h2>
+        
+        <div class="card">
+            <h3>❓ So sánh Monitoring và Logging</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tiêu chí</th>
+                            <th>Monitoring (Giám sát)</th>
+                            <th>Logging (Ghi nhật ký)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Khái niệm</td>
+                            <td>Thu thập chỉ số định lượng (Metrics)</td>
+                            <td>Ghi lại sự kiện chi tiết (Events)</td>
+                        </tr>
+                        <tr>
+                            <td>Dạng dữ liệu</td>
+                            <td>Con số, biểu đồ (CPU, RAM, RPS)</td>
+                            <td>Văn bản chi tiết (IP, User, Error Message)</td>
+                        </tr>
+                        <tr>
+                            <td>Mục đích</td>
+                            <td>Phát hiện sự cố thời gian thực</td>
+                            <td>Điều tra nguyên nhân gốc rễ (Root Cause)</td>
+                        </tr>
+                        <tr>
+                            <td>Tính chất</td>
+                            <td>Chủ động (Proactive)</td>
+                            <td>Phản ứng/Truy vết (Reactive)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="card highlight">
-            <h3>❓ Website tĩnh thuộc mô hình nào?</h3>
-            <p>
-                Website tĩnh khi triển khai trên Cloudflare Pages, Netlify hoặc Vercel
-                thường thuộc mô hình <b>PaaS (Platform as a Service)</b>.
-            </p>
-            <p>
-                <b>Lý do:</b> Người dùng chỉ cần cung cấp mã nguồn, nhà cung cấp sẽ đảm nhiệm
-                hạ tầng, bảo mật, cấu hình mạng và mở rộng quy mô.
-            </p>
+            <h3>❓ Security Visibility trong Cloud</h3>
+            <p>Là khả năng quan sát và hiểu rõ mọi hoạt động trong môi trường IT. Nó giúp loại bỏ các "điểm mù", phát hiện sớm các mối đe dọa và phản ứng nhanh với các cuộc tấn công thông qua việc kết hợp cả Logs và Metrics.</p>
         </div>
     </section>
 
-    <!-- PHẦN 2 -->
     <section class="section">
-        <h2>2. Cloudflare Pages & CDN</h2>
-
-        <div class="card">
-            <h3>❓ Cloudflare Pages hoạt động theo cơ chế gì?</h3>
-            <ul>
-                <li><b>Kết nối Git:</b> Liên kết với GitHub/GitLab</li>
-                <li><b>Build:</b> Tự động build khi có thay đổi</li>
-                <li><b>Deploy to Edge:</b> Phân phối toàn cầu qua Edge Network</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>❓ CDN phân phối nội dung ra sao?</h3>
-            <ol>
-                <li><b>Origin Server:</b> Chứa dữ liệu gốc</li>
-                <li><b>Caching:</b> Lưu bản sao tại máy chủ biên (PoP)</li>
-                <li><b>Delivery:</b> Người dùng tải từ vị trí gần nhất</li>
-            </ol>
-        </div>
-
-        <div class="card">
-            <h3>❓ Vai trò của CDN đối với hiệu năng & an toàn</h3>
-
-            <p><b>🚀 Hiệu năng:</b></p>
-            <ul>
-                <li>Giảm độ trễ (Latency)</li>
-                <li>Giảm tải máy chủ gốc</li>
-                <li>Cải thiện tốc độ tải trang & SEO</li>
-            </ul>
-
-            <p><b>🛡️ An toàn:</b></p>
-            <ul>
-                <li>Ẩn IP máy chủ gốc</li>
-                <li>Chống DDoS</li>
-                <li>WAF chặn truy cập độc hại</li>
-            </ul>
-
-            <img src="cdn-3.jpg" alt="CDN Security">
-        </div>
-    </section>
-
-    <!-- PHẦN 3 -->
-    <section class="section">
-        <h2>3. Các rủi ro bảo mật & giải pháp</h2>
-
+        <h2>2. Xác định đối tượng cần giám sát</h2>
         <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
-                        <th>Rủi ro</th>
-                        <th>Giải thích</th>
-                        <th>Giải pháp</th>
+                        <th>Đối tượng</th>
+                        <th>Tại sao cần giám sát?</th>
+                        <th>Rủi ro nếu thiếu</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Lộ IP gốc</td>
-                        <td>Tấn công bypass CDN</td>
-                        <td>Whitelist IP Cloudflare</td>
+                        <td>Người dùng & Session</td>
+                        <td>Quản lý tải và tính xác thực</td>
+                        <td>Chiếm quyền điều khiển phiên</td>
                     </tr>
                     <tr>
-                        <td>Cấu hình sai</td>
-                        <td>Quyền truy cập quá rộng</td>
-                        <td>Least Privilege, CSPM</td>
+                        <td>Login / Logout</td>
+                        <td>Kiểm soát quyền truy cập</td>
+                        <td>Tấn công Brute-force</td>
                     </tr>
                     <tr>
-                        <td>Supply Chain</td>
-                        <td>Mã độc từ thư viện</td>
-                        <td>SAST / SCA</td>
+                        <td>Request bất thường</td>
+                        <td>Phát hiện dấu hiệu tấn công</td>
+                        <td>Bị khai thác lỗ hổng web</td>
                     </tr>
                     <tr>
-                        <td>DDoS tầng ứng dụng</td>
-                        <td>Làm cạn tài nguyên</td>
-                        <td>Rate Limiting, WAF</td>
+                        <td>Lỗi hệ thống (5xx)</td>
+                        <td>Đảm bảo sức khỏe ứng dụng</td>
+                        <td>Gián đoạn dịch vụ kéo dài</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-<!---------------------------------------- PHẦN LAB 4 --------------------------------------->
-<header class="hero">
-    <h1>BÁO CÁO LAB 4</h1>
-    <p>GIÁM SÁT, NHẬT KÝ VÀ PHÁT HIỆN BẤT THƯỜNG</p>
-</header>
-
     <section class="section">
+        <h2>3. Phân tích hành vi bất thường (Tình huống giả định)</h2>
         <div class="card">
-            <h3>❓ Monitoring là gì?</h3>
-            <p>Monitoring là quá trình thu thập và phân tích các chỉ số định lượng (metrics) 
-                nhằm theo dõi trạng thái và hiệu suất hệ thống theo thời gian thực.</p>
-            <p>Các chỉ số phổ biến gồm: CPU, RAM, băng thông mạng, thời gian phản hồi, tỷ lệ lỗi.</p>
-            <p><b>Mục đích chính:</b></p>
-            <ul>
-                <li>Phát hiện sớm sự cố</li>
-                <li>Đảm bảo hệ thống hoạt động ổn định</li>
-                <li>Kích hoạt cảnh báo (alert) khi vượt ngưỡng</li>
-            </ul>
+            <h3>🔍 Tình huống: Request tăng cao, Login thất bại liên tiếp trong 10 phút</h3>
+            <p><b>Dấu hiệu phát hiện nhờ Monitoring:</b> Tần suất request (RPS) tăng vọt trên biểu đồ và tỷ lệ lỗi đăng nhập vượt ngưỡng cảnh báo.</p>
+            <p><b>Dấu hiệu phát hiện nhờ Logging:</b> Danh sách IP lạ, vị trí địa lý của kẻ tấn công và các tài khoản cụ thể đang bị nhắm tới.</p>
         </div>
-
-        <div class="card">
-            <h3>❓ Logging là gì?</h3>
-            <p>Logging là quá trình <b> ghi lại các sự kiện (events) </b> xảy ra trong hệ thống, dưới dạng nhật ký chi tiết.</p>
-            <p><b>Mục đích chính:</b></p>
-            <ul>
-                <li>Điều tra nguyên nhân sự cố (Root Cause Analysis)</li>
-                <li>Phục vụ kiểm toán, tuân thủ và pháp lý</li>
-                <li>Phân tích hành vi người dùng và tấn công</li>
-            </ul>
+        
+        <div class="card highlight">
+            <p><b>Nhận xét:</b> Nếu chỉ có Monitoring, hệ thống sẽ biết "đang bị tấn công" nhưng không thể biết "ai tấn công" (IP) và "tấn công như thế nào" để thực hiện ngăn chặn chính xác.</p>
         </div>
     </section>
-    
+
+    <section class="section">
+        <h2>4. Vai trò của Log trong điều tra & Cloud</h2>
+        <div class="card">
+            <h3>⚠️ Rủi ro liên quan đến Log</h3>
+            <ul>
+                <li><b>Ghi quá chi tiết:</b> Gây tốn dung lượng lưu trữ, chậm hệ thống và nguy cơ lộ dữ liệu nhạy cảm.</li>
+                <li><b>Không bảo vệ đúng cách:</b> Kẻ tấn công có thể sửa hoặc xóa log để xóa dấu vết hành vi vi phạm.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>☁️ Giám sát trên môi trường Cloud</h3>
+            <p>Cloud hỗ trợ giám sát đa lớp: <b>Hạ tầng</b> (VM/Storage), <b>Mạng</b> (VPC Flow Logs) và <b>Ứng dụng</b>.</p>
+            <p><b>Hạn chế:</b> Cloud không thể tự động giám sát các logic nghiệp vụ riêng biệt hoặc dữ liệu bên trong các gói tin đã được mã hóa đầu-cuối.</p>
+        </div>
+    </section>
+
     <!-- THÀNH VIÊN -->
     <section class="section">
         <h2>Thông tin thành viên nhóm</h2>
-
         <div class="members">
             <div class="member">
                 <p><b>Dương Hoàng Quốc Thái</b><br>MSSV: 22004252</p>
@@ -232,4 +214,3 @@
 
 </body>
 </html>
-
