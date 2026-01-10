@@ -651,7 +651,7 @@
     <h2 class="heading-2">6. Tổng kết quá trình thực hiện chuỗi Lab Bảo mật</h2>
 
     <div class="highlight-box" style="background-color: #f0f7ff; border-left: 5px solid #3498db; margin-bottom: 25px;">
-        Quá trình thực hành trải qua 5 giai đoạn trọng yếu, cung cấp cái nhìn toàn diện từ kiến trúc hạ tầng đến các kỹ thuật phòng thủ chuyên sâu trên môi trường Cloud.
+        Quá trình thực hành đã đi từ việc xây dựng hạ tầng cơ bản đến việc thiết lập các lớp phòng thủ chuyên sâu, giúp hình thành tư duy bảo mật toàn diện trên môi trường Cloud.
     </div>
 
     <div class="table-wrapper">
@@ -665,35 +665,32 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Lab 1: Kiến trúc Cloud</strong></td>
-                    <td>Triển khai thành công ứng dụng trên nền tảng JAMstack.</td>
-                    <td>Thấu hiểu <b>Mô hình trách nhiệm chia sẻ</b>. Chuyển dịch sang Cloud giúp giảm tải hạ tầng nhưng đòi hỏi kiểm soát mã nguồn chặt chẽ hơn.</td>
+                    <td><strong>Lab 1: Kiến trúc Cloud & CDN</strong></td>
+                    <td>Triển khai thành công JAMstack và tối ưu hóa phân phối qua Edge Network.</td>
+                    <td>Hiểu rõ <b>Shared Responsibility Model</b>. CDN không chỉ tăng tốc độ mà còn là lớp lá chắn IP gốc trước các cuộc tấn công trực diện.</td>
                 </tr>
                 <tr>
-                    <td><strong>Lab 2: Security Assessment</strong></td>
-                    <td>Tối ưu hóa và đạt điểm tuyệt đối cho các chỉ số HTTP Headers.</td>
-                    <td>Các Header (HSTS, CSP, XFO) là lớp phòng thủ <b>Client-side</b> đầu tiên; thiếu chúng hệ thống sẽ lộ diện trước các script độc hại.</td>
+                    <td><strong>Lab 2: IAM & Zero Trust</strong></td>
+                    <td>Cấu hình Cloudflare Access và chính sách truy cập dựa trên định danh (GitHub).</td>
+                    <td>Thay đổi tư duy từ bảo mật vành đai sang <b>Zero Trust</b>: "Không bao giờ tin tưởng, luôn luôn xác minh" mọi yêu cầu truy cập.</td>
                 </tr>
                 <tr>
                     <td><strong>Lab 3: Lỗ hổng OWASP</strong></td>
-                    <td>Khai thác và vá lỗi thành công các payload SQLi và XSS.</td>
-                    <td> 
-                        Tư duy <b>"Never Trust User Input"</b>. Việc làm sạch dữ liệu (Sanitization) là bắt buộc trong mọi quy trình phát triển.</td>
+                    <td>Khai thác và thực hiện vá lỗi SQL Injection, XSS trên thực tế.</td>
+                    <td>Tư duy <b>"Never Trust User Input"</b>. Việc kiểm soát dữ liệu đầu vào và mã hóa đầu ra là bắt buộc để bảo vệ tính toàn vẹn của ứng dụng.</td>
                 </tr>
                 <tr>
-                    <td><strong>Lab 4: IAM & Zero Trust</strong></td>
-                    <td>Thiết lập chính sách phân quyền đặc quyền tối thiểu (Least Privilege).</td>
-                    <td>
-                        Bảo mật hiện đại lấy <b>Danh tính</b> làm vành đai. Mọi yêu cầu truy cập đều phải được xác thực liên tục.</td>
+                    <td><strong>Lab 4: Monitoring & Logging</strong></td>
+                    <td>Xác định đối tượng giám sát và phân tích các chỉ dấu (Indicators) bất thường.</td>
+                    <td> <b>Security Visibility</b> là "đôi mắt" của hệ thống. Thiếu giám sát, quản trị viên sẽ hoàn toàn mù quáng trước các cuộc tấn công ngầm.</td>
                 </tr>
                 <tr>
-                    <td><strong>Lab 5: Giám sát & IR</strong></td>
-                    <td>Xây dựng quy trình ứng phó sự cố dựa trên Monitoring và Logging.</td>
+                    <td><strong>Lab 5: Incident Response</strong></td>
+                    <td>Xây dựng kịch bản ứng phó sự cố theo tiêu chuẩn NIST và phân tích Root Cause.</td>
                     <td>
 
 [Image of NIST Incident Response Lifecycle]
-
-                        Khả năng quan sát (Observability) là chìa khóa. Hệ thống cần "hộp đen" để điều tra nguyên nhân gốc rễ khi có sự cố.</td>
+ Bảo mật là một chu kỳ cải tiến liên tục. Sau mỗi sự cố, việc rút kinh nghiệm giúp hệ thống trở nên kiên cố hơn.</td>
                 </tr>
             </tbody>
         </table>
@@ -702,13 +699,12 @@
     <div class="highlight-box" style="background-color: #f8fff9; border-left: 5px solid #2ecc71; margin-top: 25px;">
         <h3>Kết luận chung</h3>
         <ul>
-            <li><strong>Tư duy chủ động:</strong> Chuyển từ việc chờ đợi sự cố sang việc xây dựng hệ thống tự bảo vệ đa lớp.</li>
-            <li><strong>Tiêu chuẩn công nghiệp:</strong> Nắm vững và áp dụng thực tế các tiêu chuẩn quốc tế như <b>NIST</b> và <b>OWASP</b>.</li>
-            <li><strong>Cải tiến liên tục:</strong> Bảo mật trên Cloud là một hành trình dài hạn, đòi hỏi sự giám sát và cập nhật chính sách không ngừng.</li>
+            <li><strong>Chủ động phòng thủ:</strong> Chuyển từ trạng thái chờ đợi sự cố sang việc xây dựng hệ thống tự bảo vệ đa lớp (Defense in Depth).</li>
+            <li><strong>Tuân thủ tiêu chuẩn:</strong> Áp dụng hiệu quả các khung bảo mật quốc tế như <b>OWASP Top 10</b> và <b>NIST</b> vào vận hành thực tế.</li>
+            <li><strong>Tầm nhìn dài hạn:</strong> Bảo mật Cloud không phải là đích đến mà là một hành trình giám sát, đánh giá và cập nhật chính sách không ngừng.</li>
         </ul>
     </div>
 </section>
-
     
     <!-- THÀNH VIÊN -->
     <section class="section">
@@ -735,6 +731,7 @@
 
 </body>
 </html>
+
 
 
 
