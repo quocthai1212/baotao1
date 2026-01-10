@@ -175,6 +175,74 @@
         </div>
     </section>
 
+    <section class="section">
+    <h2>3. Các rủi ro bảo mật & giải pháp (OWASP Top 10)</h2>
+
+    <div class="table-wrapper">
+        <table border="1" style="width:100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+                <tr style="background-color: #2c3e50; color: white;">
+                    <th style="padding: 12px;">Rủi ro (OWASP)</th>
+                    <th style="padding: 12px;">Giải thích / Cách khai thác</th>
+                    <th style="padding: 12px;">Giải pháp khắc phục</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>A03:2021-Injection (SQLi)</strong></td>
+                    <td>Sử dụng payload <code>' or 1=1--</code> tại form đăng nhập để vượt qua xác thực mà không cần mật khẩu.</td>
+                    <td>Sử dụng <strong>Parameterized Queries</strong> (Prepared Statements) thay vì cộng chuỗi SQL trong code backend.</td>
+                </tr>
+                
+                <tr>
+                    <td><strong>A03:2021-Injection (XSS)</strong></td>
+                    <td>Chèn mã <code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code> vào ô tìm kiếm, mã độc thực thi trên trình duyệt người dùng.</td>
+                    <td>Sử dụng <code>[textContent]</code> để render dữ liệu; thực hiện <strong>Input Validation</strong> và <strong>Output Encoding</strong>.</td>
+                </tr>
+
+                <tr>
+                    <td><strong>A01:2021-Broken Access Control</strong></td>
+                    <td>Truy cập trái phép vào <code>/administration</code> hoặc <code>/score-board</code> bằng cách đoán URL (Insecure Direct Object Reference).</td>
+                    <td>Kiểm tra quyền <strong>Authorization</strong> ở server-side; sử dụng <strong>RBAC</strong> (Role-based Access Control).</td>
+                </tr>
+
+                <tr>
+                    <td><strong>A05:2021-Security Misconfiguration</strong></td>
+                    <td>Lộ phiên bản Server, hệ điều hành qua Logs hoặc thiếu các Header bảo mật như CSP, HSTS.</td>
+                    <td>Cấu hình <strong>HTTP Security Headers</strong> (Helmet); tắt chế độ Debug; thay đổi thông tin mặc định.</td>
+                </tr>
+
+                <tr style="background-color: #f9f9f9;">
+                    <td><strong>Lộ IP gốc (Origin IP)</strong></td>
+                    <td>Kẻ tấn công tìm thấy IP thật của server để bypass qua tường lửa (WAF/Cloudflare).</td>
+                    <td>Whitelist IP của Cloudflare; chặn toàn bộ truy cập từ các IP khác trực tiếp vào Server.</td>
+                </tr>
+
+                <tr style="background-color: #f9f9f9;">
+                    <td><strong>DDoS tầng ứng dụng</strong></td>
+                    <td>Gửi hàng loạt yêu cầu tìm kiếm nặng để làm cạn kiệt CPU/RAM của server Juice Shop.</td>
+                    <td>Cấu hình <strong>Rate Limiting</strong> (giới hạn số request/giây) và sử dụng dịch vụ chống DDoS (WAF).</td>
+                </tr>
+
+                <tr style="background-color: #f9f9f9;">
+                    <td><strong>Supply Chain Vulnerabilities</strong></td>
+                    <td>Sử dụng các thư viện NPM cũ (node_modules) chứa lỗ hổng bảo mật đã biết.</td>
+                    <td>Thực hiện quét <code>npm audit</code> thường xuyên; sử dụng công cụ <strong>SCA (Software Composition Analysis)</strong>.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="section">
+    <h3>Kết quả sau khi khắc phục (Fixing Results)</h3>
+    <ul style="line-height: 1.8;">
+        <li>✅ <strong>SQL Injection:</strong> Đã chuyển đổi sang truy vấn tham số hóa, payload tấn công bị coi là chuỗi văn bản thuần.</li>
+        <li>✅ <strong>XSS:</strong> Dữ liệu từ người dùng được mã hóa trước khi hiển thị, không còn thực thi được mã script.</li>
+        <li>✅ <strong>Sensitive Data:</strong> Đã triển khai <strong>Content-Security-Policy (CSP)</strong> giúp chặn các script lạ từ bên ngoài.</li>
+    </ul>
+</section>
+    
     <!-- THÀNH VIÊN -->
     <section class="section">
         <h2>Thông tin thành viên nhóm</h2>
@@ -200,3 +268,4 @@
 
 </body>
 </html>
+
